@@ -1,17 +1,18 @@
 // 🔥 Socket.IO থেকে Server class import করছি
 import { Server } from "socket.io";
 
-// how to create a io ?? & how it work ? hay use this (io) ? must be use here io  can i not use any name here ??  hay to create let io ?? 
+// how to create a io ?? & how it work ? hay use this (io) ? must be use here io  can i not use any name here ??  hay to create let io ??
 let io; // ⚡ গ্লোবাল ভ্যারিয়েবল, যাতে সার্ভার একবারই তৈরি হয় ??
 
-// 🌐 Next.js API Route (GET মেথড)   
+// 🌐 Next.js API Route (GET মেথড)
 // // why create GET api ?? & how it work ? & must be call GET api here ??
 export async function GET() {
   // 🧠 যদি সার্ভার আগে তৈরি না হয়, তাহলে নতুন সার্ভার বানাও
-  //why to check validation ?? if i don't check validation/if condition here so this not work ? how to to create a new Server ?? 
+  //why to check validation ?? if i don't check validation/if condition here so this not work ? how to to create a new Server ??
   if (!io) {
     io = new Server(3001, {
-      cors: {  // what is cors ? why use cors ? how it work ? who to use cors ? 
+      cors: {
+        // what is cors ? why use cors ? how it work ? who to use cors ?
         origin: "*", // ✅ যেকোনো client connect করতে পারবে who to use origin:"*" ?? hoy we this ? how it work ? if i don't write cors&origin so my code is not work ?? hwy use the symbol(*) ?
       },
     });
@@ -41,7 +42,7 @@ export async function GET() {
   }
 
   // ✅ সার্ভার চালু আছে, রেসপন্স পাঠানো
-  return Response.json({ message: "Socket server চলছে ✅" });
+  return Response.json({ message: "Socket server চলছে  ✅" });
 }
 
-// PLEASE GIVE ME MY ALL QUESTION ANSWER IN BANGLA & EXPLAIN MORE MY ALL QUESTION BECAUSE I WENT STRONG MY FUNDAMENTAL 
+// PLEASE GIVE ME MY ALL QUESTION ANSWER IN BANGLA & EXPLAIN MORE MY ALL QUESTION BECAUSE I WENT STRONG MY FUNDAMENTAL
