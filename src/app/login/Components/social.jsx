@@ -1,14 +1,17 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { signIn } from "next-auth/react";
 
 export default function AuthButtons() {
   const handleGoogleLogin = () => {
-    // Call your auth logic here
+    signIn("google");
     console.log("Google login clicked");
   };
 
   const handleGithubLogin = () => {
-    console.log("GitHub login clicked");
+    signIn("github");
+    console.log("github login clicked");
   };
 
   return (

@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import Or from "../or";
+import Or from "./or";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import AuthButtons from "../social";
+import AuthButtons from "./social";
 
 export default function From() {
   const [email, setEmail] = useState("");

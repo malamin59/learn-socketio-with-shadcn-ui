@@ -21,12 +21,12 @@ export async function GET() {
     // why use io.on ? what is on ?? how to work with in.on ?? how it work ??
     // i mset use use "connection" ? if not so my code work ?? (socket) why ? must be use socket if use here my name like (alamin) so my code is work  ?
     io.on("connection", (socket) => {
-      console.log("✅ নতুন ইউজার কানেক্ট হয়েছে:", socket.id);
+      console.log("✅ Connected new use ..", socket.id);
 
       // 📩 যখন client থেকে message আসে
       // why use this socket.on ?? how it work ?? must be use "sendMessage" (data) why ?? muse be write (data)
       socket.on("sendMessage", (data) => {
-        console.log("📩 বার্তা এসেছে:", data);
+        console.log("📩 message come :", data);
 
         // 📢 সকল ক্লায়েন্টকে message পাঠানো
         //what is emit ?? how it work ?? must be "receiveMessage", | & data ?? if not so code is work ??
@@ -36,13 +36,13 @@ export async function GET() {
       //  যখন কোনো ইউজার disconnect করে
       // how to use below code ? how it work ???? when we use this code ?? must be use "disconnect" ? must be use aro function ??
       socket.on("disconnect", () => {
-        console.log(" ইউজার চলে গেছে:", socket.id);
+        console.log(" user was gone ", socket.id);
       });
     });
   }
 
   // ✅ সার্ভার চালু আছে, রেসপন্স পাঠানো
-  return Response.json({ message: "Socket server চলছে  ✅" });
+  return Response.json({ message: "Socket server running...  ✅" });
 }
 
 // PLEASE GIVE ME MY ALL QUESTION ANSWER IN BANGLA & EXPLAIN MORE MY ALL QUESTION BECAUSE I WENT STRONG MY FUNDAMENTAL
