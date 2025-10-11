@@ -2,16 +2,17 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:3001");
+const socket = io("https://chat-rho-amber.vercel.app");
 
 export default function ChatPage() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const { data: session, status } = useSession();
-    const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef(null);
   const { name, email, image } = session?.user || {};
   console.log(messages);
   //explain below useEffect how it work ??
@@ -51,8 +52,12 @@ export default function ChatPage() {
   };
   if (!session)
     return (
-      <div className="flex items-center justify-center h-screen text-xl">
-        Please login to chat 🔐
+      <div className="flex gap-2 items-center justify-center h-screen text-xl">
+        Please login to chat{" "}
+        <Link className="text-blue-700 hover:underline" href="/login">
+          {" "}
+          login
+        </Link>
       </div>
     );
 
@@ -84,9 +89,7 @@ export default function ChatPage() {
             </p>
           </div>
         ))}
-<div ref={messagesEndRef}>
-
-</div>
+        <div ref={messagesEndRef}></div>
       </div>
 
       {/* input & button */}
