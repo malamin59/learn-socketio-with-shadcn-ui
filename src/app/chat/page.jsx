@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
+import BackLogin from "../shard/BackLogin";
 
 const socket = io("https://socketio-server-kjv0.onrender.com");
 
@@ -50,17 +51,8 @@ export default function ChatPage() {
     });
     setMessage("");
   };
-  
-  if (!session)
-    return (
-      <div className="flex gap-2 items-center justify-center h-screen text-xl">
-        Please login to chat{" "}
-        <Link className="text-blue-700 hover:underline" href="/login">
-          {" "}
-          login
-        </Link>
-      </div>
-    );
+
+  if (!session) return <BackLogin />;
 
   return (
     <div className="max-w-md mx-auto h-screen lg:my-4  border min-h-[100dvh] rounded-lg p-4  shadow">
