@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("https://chat-rho-amber.vercel.app");
+const socket = io("https://socketio-server-kjv0.onrender.com");
 
 export default function ChatPage() {
   const [message, setMessage] = useState("");
@@ -14,7 +14,7 @@ export default function ChatPage() {
   const { data: session, status } = useSession();
   const messagesEndRef = useRef(null);
   const { name, email, image } = session?.user || {};
-  console.log(messages);
+
   //explain below useEffect how it work ??
   useEffect(() => {
     socket.on("receiveMessage", (data) => {
@@ -50,6 +50,7 @@ export default function ChatPage() {
     });
     setMessage("");
   };
+  
   if (!session)
     return (
       <div className="flex gap-2 items-center justify-center h-screen text-xl">
@@ -62,10 +63,12 @@ export default function ChatPage() {
     );
 
   return (
-    <div className="max-w-md mx-auto mt-22 border rounded-lg p-4 shadow">
-      <h2 className="text-2xl font-bold text-center mb-4">💬 Live Chat</h2>
+    <div className="max-w-md mx-auto h-screen lg:my-4  border min-h-[100dvh] rounded-lg p-4  shadow">
+      <h2 className="text-2xl font-bold text-center  pt-12 mb-4">
+        💬 Live Chat
+      </h2>
       {/* Message list  */}
-      <div className="h-84 overflow-y-auto border rounded p-2 bg-gray-50 flex flex-col space-y-1">
+      <div className="h-9/12 overflow-y-auto border rounded p-2 bg-gray-50 flex flex-col space-y-1">
         {messages.map((msg, index) => (
           <div
             key={index}
@@ -74,10 +77,10 @@ export default function ChatPage() {
             }`}
           >
             <p
-              className={`p-2 rounded-lg shadow-sm max-w-[75%]  w-fit break-words whitespace-pre-wrap ${
+              className={`p-1 rounded-lg shadow-sm max-w-[75%]  w-fit break-words whitespace-pre-wrap ${
                 msg.email === email
-                  ? "bg-black text-white rounded-br-none"
-                  : "bg-blue-950 text-gray-800 rounded-bl-none"
+                  ? "bg-green-800 text-white rounded-br-none"
+                  : "bg-black text-white rounded-bl-none"
               }`}
             >
               <span className="text-sm"> {msg?.name}</span>

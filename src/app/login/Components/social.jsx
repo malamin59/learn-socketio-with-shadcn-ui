@@ -6,8 +6,7 @@ import { signIn } from "next-auth/react";
 export default function AuthButtons() {
   const handleGoogleLogin = () => {
     signIn("google");
-    console.log("Google login clicked");
-  };
+    };
 
   const handleGithubLogin = () => {
     signIn("github");
