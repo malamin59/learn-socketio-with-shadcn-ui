@@ -13,14 +13,11 @@ export default function ChatPage() {
   const [messages, setMessages] = useState([]);
   const { data: session, status } = useSession();
   const { name, email, image } = session?.user || {};
-
-  //explain below useEffect how it work ??
   useEffect(() => {
     socket.on("receiveMessage", (data) => {
       console.log("new message:", data);
       setMessages((prev) => [...prev, data]);
     });
-
     return () => socket.off("receiveMessage");
   }, []);
 
@@ -44,7 +41,7 @@ export default function ChatPage() {
   };
   // if (!session) return <BackLogin />;
   return (
-    <div className="max-w-md mx-auto h-screen    border min-h-[100dvh] rounded-lg p-4  shadow">
+    <div className="max-w-md mx-auto h-screen    min-h-[100dvh] rounded-lg lg:p-8 p-4 shadow">
       <ChatHeader />
       {/* Message list  */}
       <MessageList messages={messages} userEmail={email} />

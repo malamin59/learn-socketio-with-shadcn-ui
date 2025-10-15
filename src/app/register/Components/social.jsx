@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function AuthButtons() {
   const handleGoogleLogin = () => {
     signIn("google");
-    };
+  };
 
   const handleGithubLogin = () => {
     signIn("github");
@@ -29,8 +29,8 @@ export default function AuthButtons() {
       >
         <FaGithub /> Login with GitHub
       </Button>
-       <span className="text-center text-sm">
-        new this site please <Link className="text-blue-700 hover:underline" href="/register"> register </Link>
+      <span className="text-center text-sm">
+        already have a account <Link className="text-blue-700 hover:underline" href="/login"> login </Link>
       </span>
     </div>
   );

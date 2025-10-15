@@ -10,7 +10,7 @@ export default function MessageList({ messages, userEmail }) {
     }
   }, [messages]);
   return (
-    <div className="h-9/12 overflow-y-auto border rounded p-2 bg-gray-50 flex flex-col space-y-1">
+    <div className="h-9/12 overflow-y-auto border  rounded p-2 bg- flex flex-col space-y-1">
       {messages.map((msg, index) => (
         <div
           key={index}
