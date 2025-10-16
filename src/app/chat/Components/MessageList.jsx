@@ -22,7 +22,7 @@ export default function MessageList({ messages, userEmail }) {
             className={`p-1 rounded-lg shadow-sm max-w-[75%]  w-fit break-words whitespace-pre-wrap ${
               msg.email === userEmail
                 ? "bg-green-800 text-white rounded-br-none"
-                : "bg-black text-white rounded-bl-none"
+                : "bg-gray-800 text-white rounded-bl-none"
             }`}
           >
             <span className="text-sm"> {msg?.name}</span>
