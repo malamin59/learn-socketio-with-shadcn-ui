@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 export default function LoginCard() {
   const pathname = usePathname();
   useEffect(() => {
-    console.log("Current Pathname is", pathname);
+    // console.log("Current Pathname is", pathname);
   }, [pathname]);
   return (
     <div className="flex items-center justify-center min-h-[100dvh]  p-2 

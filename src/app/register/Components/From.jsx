@@ -1,12 +1,10 @@
 "use client";
-
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Form,
   FormControl,
@@ -17,8 +15,7 @@ import {
 } from "@/components/ui/form";
 import Or from "./or";
 import AuthButtons from "./social";
-import { registerUser } from "@/app/actions/auth/registerUser";
-
+import { registerUser } from "@/app/actions/auth/register";
 // ✅ Zod schema for validation
 const formSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -36,9 +33,10 @@ export default function RegisterForm() {
     },
   });
 
-  const onSubmit = (data) => {
-    console.log("Form data:", data);
-    registerUser(data); 
+  const onSubmit = async (data) => {
+          console.log(data);
+          registerUser(data)
+   
   };
 
   return (
