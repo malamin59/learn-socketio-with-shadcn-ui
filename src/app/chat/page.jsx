@@ -39,9 +39,9 @@ export default function ChatPage() {
     });
     setMessage("");
   };
-  // if (!session) return <BackLogin />;
+  if (!session) return <BackLogin />;
   return (
-    <div className="max-w-md mx-auto h-screen    min-h-[100dvh] rounded-lg lg:p-8 p-4 shadow">
+    <div className="max-w-md mx-auto h-screen min-h-[100dvh] rounded-lg lg:p-8 p-4 shadow">
       <ChatHeader />
       {/* Message list  */}
       <MessageList messages={messages} userEmail={email} />

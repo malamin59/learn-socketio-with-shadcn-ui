@@ -7,7 +7,10 @@ export default function BackLogin() {
       <div>
         <p>
           {" "}
-          Please{" "}<Link className="text-blue-700 hover:underline" href="/login">{" "} login
+          Please{" "}
+          <Link className="text-blue-700 hover:underline" href="/login">
+            {" "}
+            login
           </Link>{" "}
           to chat{" "}
         </p>

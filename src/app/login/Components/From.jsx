@@ -1,50 +1,47 @@
 "use client";
-import React, { useState } from "react";
-import Or from "./or";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import AuthButtons from "./social";
 
-export default function From() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Email: ${email}\nPassword: ${password}`);
+import React from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
+import AuthFrom from "@/app/Components/Common/AuthFrom";
+import InputField from "@/app/register/Components/InputField";
+import LogInInputField from "./LogInInputField";
+
+// ✅ Validation schema with Zod
+const formSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
+
+export default function FormLogin() {
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  // ✅ Handle submit
+  const onSubmit = (data) => {
+    alert(`Email: ${data.email}\nPassword: ${data.password}`);
+    // You can call your login API here instead of alert
   };
 
   return (
-    <div className="">
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="your@email.com"
-            required
-          />
-        </div>
-        <div className="space-y-1">
-          <Label htmlFor="password">Password</Label>
-          <Input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="********"
-            required
-          />
-        </div>
-        <Button type="submit" className="w-full mt-2">
-          Login
-        </Button>
-        <Or />
-        <AuthButtons />
-      </form>
-    </div>
+    <AuthFrom
+      form={form}
+      onSubmit={onSubmit}
+      buttonLabel="Login"
+      authLink={{
+        linkText: "register",
+        linkHref: "/register",
+        linkPrefix: "New this site please? ",
+      }}
+    >
+      <LogInInputField form={form} />
+    </AuthFrom>
   );
 }
